@@ -244,4 +244,15 @@ body {
     -webkit-text-fill-color: transparent;
     text-shadow: 0 0 20px rgba(255, 77, 77, 0.5); /* إضاءة خفيفة حول الحروف */
     letter-spacing: 5px;
+
+}
+function checkPassword() {
+    const password = document.getElementById("password-input").value;
+    if (password === "كلمة السر بتاعتك") {
+        document.getElementById("password-screen").style.display = "none";
+        document.getElementById("main-content").style.display = "block";
+        document.body.classList.add("access-granted"); // السطر ده هو اللي هيفتح السكرول
+    } else {
+        alert("كلمة السر غلط يا بطل!");
+    }
 }
