@@ -1,0 +1,247 @@
+/* استيراد الخطوط */
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;700&display=swap');
+
+:root {
+    --bg-color: #0d0d0d;
+    --card-bg: rgba(255, 255, 255, 0.05);
+    --accent-color: #ff6b6b;
+    --text-primary: #ffffff;
+    --text-secondary: #b3b3b3;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-primary);
+    font-family: 'Cairo', sans-serif;
+    margin: 0;
+    direction: rtl;
+    overflow-x: hidden;
+}
+
+/* تحسين صفحة الباسورد لتكون زي الصورة */
+#password-screen {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: radial-gradient(circle, #1a1a1a 0%, #0d0d0d 100%);
+}
+
+.login-box {
+    background: var(--card-bg);
+    backdrop-filter: blur(20px);
+    padding: 40px;
+    border-radius: 30px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    width: 90%;
+    max-width: 400px;
+    text-align: center;
+    box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+}
+
+.login-box input {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 15px;
+    border-radius: 15px;
+    color: white;
+    margin: 20px 0;
+    outline: none;
+}
+
+.login-box button {
+    width: 100%;
+    background: var(--accent-color);
+    color: white;
+    border: none;
+    padding: 15px;
+    border-radius: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+/* شكل الكروت (Cards) زي اللي في الصور */
+.msg-card, .photo-card {
+    background: var(--card-bg);
+    backdrop-filter: blur(15px);
+    border-radius: 25px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    margin: 20px;
+    padding: 20px;
+    transition: 0.3s;
+}
+
+.photo-card img {
+    width: 100%;
+    height: 400px;         /* ارفع الرقم ده لـ 450 لو عاوز تبين جزء أكبر من الصورة */
+    object-fit: cover;     /* دي بتحافظ على أبعاد الصورة من غير مط */
+    
+    /* السطر اللي جاي هو الحل */
+    object-position: center top; /* 'top' بتسحب الصورة لفوق عشان تبين الجزء العلوي */
+    
+    border-radius: 20px 20px 0 0;
+    display: block;
+}
+
+.photo-card {
+    max-width: 450px;  /* عشان الكارت نفسه ميبقاش عريض أوي */
+    margin: 20px auto; /* عشان الكارت يجي في نص الشاشة */
+    background: var(--card-bg);
+    backdrop-filter: blur(15px);
+    border-radius: 25px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    overflow: hidden; /* عشان الصورة متطلعش بره حواف الكارت */
+}
+
+.stats-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* هيخليها صفين كل صف فيه 3 */
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.stat-box {
+    background: var(--card-bg);
+    padding: 20px;
+    border-radius: 20px;
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.stat-box h3 { color: var(--accent-color); margin: 0; font-size: 1.5rem; }
+.stat-box p { color: var(--text-secondary); margin: 5px 0 0; font-size: 0.8rem; }
+.heart {
+    position: fixed; /* تأكد إنها fixed */
+    top: -20px;
+    z-index: 9999;
+    pointer-events: none;
+    user-select: none;
+    animation: fall linear forwards;
+}
+
+@keyframes fall {
+    0% {
+        top: -50px;
+        transform: translateX(0) rotate(0deg);
+    }
+    100% {
+        top: 110vh; /* تنزل لحد تحت الشاشة */
+        transform: translateX(100px) rotate(360deg); /* تروح يمين شوية وهي نازلة */
+    }
+}
+/* تصميم مشغل الأغنية */
+.music-player {
+    background: var(--card-bg); /* نفس لون الكروت اللي عملناها */
+    backdrop-filter: blur(15px);
+    border-radius: 30px;
+    padding: 15px 25px;
+    margin: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.music-info h3 {
+    margin: 0;
+    font-size: 1.1rem;
+    color: white;
+}
+
+.music-info p {
+    margin: 5px 0 0 0;
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+}
+
+/* زرار التشغيل اللي منور */
+#play-pause-btn {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: none;
+    background: #ff7575; /* اللون المحمر اللي في الصورة */
+    color: white;
+    font-size: 1.2rem;
+    cursor: pointer;
+    box-shadow: 0 0 20px rgba(255, 117, 117, 0.6); /* تأثير الإضاءة (Glow) */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.3s;
+}
+
+#play-pause-btn:hover {
+    transform: scale(1.1);
+}
+.love-quote {
+    font-style: italic;
+    font-size: 1.2rem;
+    line-height: 1.6;
+    color: #ffdada; /* لون وردي خفيف */
+    text-align: center;
+    padding: 20px;
+}
+/* تنسيق حاوية الصور */
+.gallery-container {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px; /* مسافة بين كل كارت والتاني */
+}
+
+/* تنسيق كارت الصورة */
+.photo-card {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+.photo-card img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+}
+
+/* تنسيق الكلام تحت الصور */
+.photo-text {
+    padding: 20px;
+    text-align: center;
+}
+
+.photo-text p {
+    color: #fff;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin: 0;
+    font-family: 'Cairo', sans-serif; /* لو مستخدم خط كايرو */
+}
+.final-message {
+    text-align: center;
+    padding: 40px 20px;
+    margin-top: 30px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.final-message p {
+    font-size: 1.3rem;
+    color: #ffcccc; /* لون وردي رقيق */
+    font-style: italic;
+    line-height: 1.8;
+    text-shadow: 0 0 10px rgba(255, 192, 203, 0.5);
+}
+.main-title, .login-box h2 {
+    font-family: 'Arial', sans-serif;
+    font-size: 3.5rem;
+    background: linear-gradient(45deg, #fff, #ff4d4d); /* تدريج ألوان بين الأبيض والأحمر */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 20px rgba(255, 77, 77, 0.5); /* إضاءة خفيفة حول الحروف */
+    letter-spacing: 5px;
+}
