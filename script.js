@@ -1,3 +1,4 @@
+document.body.style.overflow = "hidden";
 // 1. تحديد التاريخ اللي بدأتوا فيه (غير الأرقام دي)
 const startDate = new Date("2021-10-7"); // السنة - الشهر - اليوم
 
@@ -9,6 +10,7 @@ function checkPassword() {
         // إخفاء صفحة الباسورد وإظهار المحتوى
         document.getElementById('password-screen').style.display = 'none';
         document.getElementById('main-content').style.display = 'block';
+        document.body.style.overflow = "auto";
 
         // تشغيل الموسيقى
         const music = document.getElementById('bg-music');
@@ -96,4 +98,5 @@ playBtn.addEventListener('click', function() {
         playerIcon.innerText = "▶"; // شكل Play
         playBtn.style.boxShadow = "none";
     }
+
 });
